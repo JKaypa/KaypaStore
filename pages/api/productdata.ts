@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
 
-type Data = {
+export type Data = {
   _id: number;
   title: string;
   description: string;
@@ -12,7 +12,7 @@ type Data = {
   isNew: boolean;
   category: string;
 }[];
-const productData = [
+const productData: Data = [
   {
     _id: 101,
     title: "Canon EOS Rebel T100",
@@ -41,8 +41,7 @@ const productData = [
   {
     _id: 103,
     title: "Apple 10.2-inch iPad",
-    description:
-      "2021 Apple 10.2-inch iPad Wi-Fi 64GB - Space Gray (9th Generation)",
+    description: "2021 Apple 10.2-inch iPad Wi-Fi 64GB - Space Gray (9th Generation)",
     oldPrice: 329.0,
     price: 269.0,
     brand: "Apple",
@@ -100,8 +99,7 @@ const productData = [
   {
     _id: 108,
     title: "T-Shirt Men",
-    description:
-      "St Patricks Day T-Shirt Men -Image by Shutterstock, Male XX-Large",
+    description: "St Patricks Day T-Shirt Men -Image by Shutterstock, Male XX-Large",
     oldPrice: 15.0,
     price: 18.99,
     brand: "Smartprints",
@@ -135,8 +133,7 @@ const productData = [
   {
     _id: 111,
     title: "Girls Cropped",
-    description:
-      "Free Assembly Girls Cropped Mixed Cable Knit Fair Isle Sweater, Sizes 4-18",
+    description: "Free Assembly Girls Cropped Mixed Cable Knit Fair Isle Sweater, Sizes 4-18",
     oldPrice: 20.0,
     price: 15.31,
     brand: "Free Assembly",
@@ -170,8 +167,7 @@ const productData = [
   },
   {
     _id: 114,
-    title:
-      "L'Oreal Paris Revitalift Triple Power Anti-Aging Cream Face Moisturizer 1.7 oz",
+    title: "L'Oreal Paris Revitalift Triple Power Anti-Aging Cream Face Moisturizer 1.7 oz",
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since",
     oldPrice: 35.0,
@@ -183,8 +179,7 @@ const productData = [
   },
   {
     _id: 115,
-    title:
-      "L'Oreal Paris 55+ Moisturizer Anti-Aging Face Moisturizer, Wrinkle Expert, 1.7 oz",
+    title: "L'Oreal Paris 55+ Moisturizer Anti-Aging Face Moisturizer, Wrinkle Expert, 1.7 oz",
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since",
     oldPrice: 23.65,
@@ -196,8 +191,7 @@ const productData = [
   },
   {
     _id: 116,
-    title:
-      "Vaseline Intensive Care™ Advanced Repair Unscented Body Lotion, 20.3 oz",
+    title: "Vaseline Intensive Care™ Advanced Repair Unscented Body Lotion, 20.3 oz",
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since",
     oldPrice: 9.99,
@@ -221,8 +215,7 @@ const productData = [
   },
   {
     _id: 118,
-    title:
-      "Neutrogena Hydro Boost Hyaluronic Acid Water Gel Face Moisturizer, 1.7 oz",
+    title: "Neutrogena Hydro Boost Hyaluronic Acid Water Gel Face Moisturizer, 1.7 oz",
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since",
     oldPrice: 29.0,

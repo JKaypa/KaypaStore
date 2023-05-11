@@ -1,8 +1,15 @@
 import Banner from "@/components/Banner";
 import Navbar from "@/components/Navbar";
 import Head from "next/head";
+import { Data } from "./api/productdata";
 
-export default function Home() {
+interface Props {
+  productData: Data
+}
+
+export default function Home({productData}: Props) {
+  console.log(productData);
+  
   return (
     <>
       <Head>
@@ -19,4 +26,14 @@ export default function Home() {
       </main>
     </>
   );
+}
+
+
+export const getServerSideProps = async () => {
+  const productData = await (await fetch('http://localhost:3000/api/productdata'))
+  .json()
+
+  return {
+    props: {productData}
+  }
 }
