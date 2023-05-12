@@ -6,7 +6,7 @@ import {MdOutlineLocationOn} from 'react-icons/md'
 
 function NavBarButtom() {
   return (
-    <div className="py-2 px-6 flex items-center justify-between">
+    <div className="py-2 px-6 flex items-center justify-evenly">
       <div className="flex items-center gap-2">
         <div className="flex items-center gap-2">
           <Image src={phoneImg} alt="phoneImg" className="w-6"/>

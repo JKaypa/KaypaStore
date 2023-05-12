@@ -4,7 +4,7 @@
 
 @layer components {
   .navBarHover {
-    @apply h-12 px-5 rounded-full flex items-center gap-2 hover:bg-hoverBg duration-300 cursor-pointer bg-transparent
+    @apply h-12 px-5 rounded-full bg-transparent flex items-center gap-2 hover:bg-hoverBg duration-300 cursor-pointer;
   }
   .navli {
     @apply hover:underline underline-offset-2 cursor-pointer decoration-[1px] duration-200

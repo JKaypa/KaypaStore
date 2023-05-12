@@ -2,13 +2,13 @@ import Banner from "@/components/Banner";
 import Navbar from "@/components/Navbar";
 import Head from "next/head";
 import { Data } from "./api/productdata";
+import Products from "@/components/Products";
 
-interface Props {
+export interface Props {
   productData: Data
 }
 
 export default function Home({productData}: Props) {
-  console.log(productData);
   
   return (
     <>
@@ -22,6 +22,7 @@ export default function Home({productData}: Props) {
         <Navbar />
         <div className="max-w-contentContainer mx-auto">
           <Banner />
+          <Products productData={productData} />
         </div>
       </main>
     </>
