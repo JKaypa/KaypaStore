@@ -3,6 +3,8 @@ import Navbar from "@/components/Navbar";
 import Head from "next/head";
 import { Data } from "./api/productdata";
 import Products from "@/components/Products";
+import Footer from "@/components/Footer";
+import TopFooter from "@/components/TopFooter";
 
 export interface Props {
   productData: Data
@@ -24,6 +26,8 @@ export default function Home({productData}: Props) {
           <Banner />
           <Products productData={productData} />
         </div>
+        <TopFooter />
+        <Footer />
       </main>
     </>
   );

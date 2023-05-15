@@ -8,7 +8,7 @@ import NavBarButtom from "./NavBarButtom";
 
 function Navbar() {
   return (
-    <div className="bg-blue text-white ">
+    <div className="bg-blue text-white sticky top-0 z-10">
 
       <div className="border-b border-b-white" >
 
