@@ -5,6 +5,7 @@ import { BiSearchAlt } from "react-icons/bi";
 import { AiOutlineHeart, AiOutlineUser } from "react-icons/ai";
 import { BsCart2 } from "react-icons/bs";
 import NavBarButtom from "./NavBarButtom";
+import Link from "next/link";
 
 function Navbar() {
   return (
@@ -13,10 +14,12 @@ function Navbar() {
       <div className="border-b border-b-white" >
 
         <div className="max-w-container mx-auto h-20 px-4 flex items-center gap-2">
-
+          <Link href='/'>
           <div className="navBarHover">
             <Image src={logo} className="w-44" alt="logo" />
           </div>
+          </Link>
+          
 
           <div className="navBarHover">
             <div className="grid grid-cols-2 gap-[2px]">
@@ -65,7 +68,7 @@ function Navbar() {
               <h2 className="text-base font-semibold -mt-1">Account</h2>
             </div>
           </div>
-
+          <Link href='cart'>
           <div className="px-5 flex flex-col justify-center items-center rounded-full hover:bg-hoverBg duration-300 relative">
             <BsCart2 className="pt-1 text-2xl" />
             <p className="pb-1 text-xs">$0.00</p>
@@ -73,6 +76,8 @@ function Navbar() {
               0
             </span>
           </div>
+          </Link>
+          
 
         </div>
 
