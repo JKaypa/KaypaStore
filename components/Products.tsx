@@ -1,5 +1,6 @@
 import { Props } from "@/pages";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { BsStarFill } from "react-icons/bs";
 import { GoPlus } from "react-icons/go";
@@ -18,8 +19,8 @@ function Products({ productData }: Props) {
               className="object-contain scale-100 group-hover:scale-105 duration-300"
             />
           </div>
-          <div className="px-2 py-4 flex flex-col justify-center">
-            <div className="flex justify-between py-2">
+          <div className="px-2 flex flex-col justify-center">
+            <div className="flex justify-between">
               <button
                 className="w-20 h-9 bg-blue text-white rounded-full flex gap-1 items-center justify-center
                hover:bg-[#004f9a] duration-300"
@@ -29,15 +30,33 @@ function Products({ productData }: Props) {
                 </span>
                 Add
               </button>
-              <button
-                className="w-24 h-9 bg-white text-black border border-black rounded-full flex gap-1 items-center justify-center
-               hover:bg-black hover:text-white duration-300"
+              <Link
+                href={{
+                  pathname: `product/${product._id}`,
+                  query: {
+                    _id: product._id,
+                    title: product.title,
+                    description: product.description,
+                    price: product.price,
+                    oldPrice: product.oldPrice,
+                    brand: product.brand,
+                    categoty: product.category,
+                    image: product.image,
+                    isNew: product.isNew,
+                  },
+                }}
+                as={`product/${product._id}`}
               >
-                <span>
-                  <GoPlus />
-                </span>
-                Detail
-              </button>
+                <button
+                  className="w-24 h-9 bg-white text-black border border-black rounded-full flex gap-1 items-center justify-center
+               hover:bg-black hover:text-white duration-300"
+                >
+                  <span>
+                    <GoPlus />
+                  </span>
+                  Detail
+                </button>
+              </Link>
             </div>
             <div className="flex items-center gap-3">
               <p className="text-lg text-green-700 font-semibold ">Now ${product.price}</p>
