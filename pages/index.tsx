@@ -3,13 +3,11 @@ import Head from "next/head";
 import { Data } from "./api/productdata";
 import Products from "@/components/Products";
 
-
 export interface Props {
-  productData: Data
+  productData: Data;
 }
 
-export default function Home({productData}: Props) {
-  
+export default function Home({ productData }: Props) {
   return (
     <>
       <Head>
@@ -28,12 +26,10 @@ export default function Home({productData}: Props) {
   );
 }
 
-
 export const getServerSideProps = async () => {
-  const productData = await (await fetch('http://localhost:3000/api/productdata'))
-  .json()
+  const productData = await (await fetch("http://localhost:3000/api/productdata")).json();
 
   return {
-    props: {productData}
-  }
-}
+    props: { productData },
+  };
+};
