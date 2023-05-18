@@ -12,6 +12,26 @@ export type Data = {
   isNew: boolean;
   category: string;
 }[];
+
+export type Product = {
+  _id: number;
+  title: string;
+  description: string;
+  oldPrice: number;
+  price: number;
+  brand: string;
+  image: string;
+  isNew: boolean;
+  quantity: number;
+  category: string;
+}
+
+export interface userInfo {
+  _id: string;
+  name: string;
+  email: string
+}
+
 const productData: Data = [
   {
     _id: 101,

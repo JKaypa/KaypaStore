@@ -5,6 +5,8 @@ import React, { useEffect, useState } from "react";
 import { BsInfoCircle, BsStarFill } from "react-icons/bs";
 import { IoMdHeartEmpty } from "react-icons/io";
 
+
+
 // type Detail = {
 //   _id: string
 //   title: string
