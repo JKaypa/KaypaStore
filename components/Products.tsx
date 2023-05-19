@@ -1,6 +1,5 @@
 import { Props } from "@/pages";
-import { addToCart, deleteProduct } from "@/store/slice";
-
+import { addToCart, detail } from "@/store/slice";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -9,6 +8,7 @@ import { GoPlus } from "react-icons/go";
 import { useDispatch } from "react-redux";
 
 function Products({ productData }: Props) {
+
   const dispatch = useDispatch();
 
   return (
@@ -27,21 +27,17 @@ function Products({ productData }: Props) {
           <div className="px-2 flex flex-col justify-center">
             <div className="flex justify-between">
               <button
-                onClick={() =>
-                  dispatch(
-                    addToCart({
-                      _id: product._id,
-                      title: product.title,
-                      description: product.description,
-                      image: product.image,
-                      price: product.price,
-                      oldPrice: product.oldPrice,
-                      quantity: 1,
-                      brand: product.brand,
-                      category: product.category,
-                    })
-                  )
-                }
+                onClick={() => dispatch(addToCart({
+                  _id: product._id,
+                  title: product.title,
+                  description: product.description,
+                  image: product.image,
+                  price: product.price,
+                  oldPrice: product.oldPrice,
+                  quantity: 1,
+                  brand: product.brand,
+                  category: product.category
+                }))}
                 className="w-20 h-9 bg-blue text-white rounded-full flex gap-1 items-center justify-center
                hover:bg-[#004f9a] duration-300"
               >
@@ -50,34 +46,21 @@ function Products({ productData }: Props) {
                 </span>
                 Add
               </button>
-              <button
-                  onClick={() =>
-                    dispatch(
-                      deleteProduct(product._id)     
-                
-                    )
-                  }
-                >
-                  Delete
-                </button>
               <Link
-                href={{
-                  pathname: `product/${product._id}`,
-                  query: {
-                    _id: product._id,
-                    title: product.title,
-                    description: product.description,
-                    price: product.price,
-                    oldPrice: product.oldPrice,
-                    brand: product.brand,
-                    categoty: product.category,
-                    image: product.image,
-                    isNew: product.isNew,
-                  },
-                }}
-                as={`product/${product._id}`}
+                href={`product/${product._id}`}
               >
                 <button
+                onClick={() => dispatch(detail({
+                  _id: product._id,
+                  title: product.title,
+                  description: product.description,
+                  image: product.image,
+                  price: product.price,
+                  oldPrice: product.oldPrice,
+                  quantity: 1,
+                  brand: product.brand,
+                  category: product.category
+                }))}
                   className="w-24 h-9 bg-white text-black border border-black rounded-full flex gap-1 items-center justify-center
                hover:bg-black hover:text-white duration-300"
                 >

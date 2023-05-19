@@ -1,39 +1,16 @@
 import { ship1Img, ship2Img, ship3Img } from "@/public/assets/images";
+import { addToCart, resetDetail } from "@/store/slice";
 import Image from "next/image";
-import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { BsInfoCircle, BsStarFill } from "react-icons/bs";
 import { IoMdHeartEmpty } from "react-icons/io";
+import { useDispatch, useSelector } from "react-redux";
 
-
-
-// type Detail = {
-//   _id: string
-//   title: string
-//   image: string
-//   description: string
-//   oldPrice: number
-//   price: number
-//   brand: string
-//   isNew: boolean
-//   category: string
-// }
-
-// interface Prod {
-//   query: Detail
-// }
 
 function ProductDetails() {
-  const { query } = useRouter();
-
-  const [product, setProduct] = useState<any>({});
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    setLoading(true);
-    setProduct(query);
-    setLoading(false);
-  }, []);
+  
+  const dispatch = useDispatch();
+  const product = useSelector((state: any) => state.shopper.detail);
 
   return (
     <div className="w-full bg-white">
@@ -99,7 +76,24 @@ function ProductDetails() {
               </p>
             </div>
             <div className="border-b border-b-zinc-300 pb-4">
-              <button className="w-32 h-10 bg-blue text-white rounded-full hover:bg-[#004f9a] duration-300">
+              <button
+                onClick={() =>
+                  dispatch(
+                    addToCart({
+                      _id: Number(product._id),
+                      title: product.title,
+                      description: product.description,
+                      image: product.image,
+                      price: product.price,
+                      oldPrice: product.oldPrice,
+                      quantity: 1,
+                      brand: product.brand,
+                      category: product.category,
+                    })
+                  )
+                }
+                className="w-32 h-10 bg-blue text-white rounded-full hover:bg-[#004f9a] duration-300"
+              >
                 Add to cart
               </button>
             </div>
