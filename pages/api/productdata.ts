@@ -97,8 +97,8 @@ const productData: Data = [
     title: "Beats Solo3",
     description:
       "Beats Solo3 Wireless On-Ear Headphones with Apple W1 Headphone Chip, Black, MX432LL/A",
-    oldPrice: 120.99,
-    price: 130.09,
+    oldPrice: 130.09,
+    price: 120.99,
     brand: "Beats by Dr. Dre",
     image: "https://i.ibb.co/rQKjVC2/5.webp",
     isNew: true,

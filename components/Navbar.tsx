@@ -80,7 +80,7 @@ function Navbar() {
               <h2 className="text-base font-semibold -mt-1">Account</h2>
             </div>
           </div>
-          <Link href="cart">
+          <Link href="/cart">
             <div className="px-5 flex flex-col justify-center items-center rounded-full hover:bg-hoverBg duration-300 relative">
               <BsCart2 className="pt-1 text-2xl" />
               <p className="pb-1 text-xs">${totalAmount}</p>
