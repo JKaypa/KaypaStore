@@ -20,9 +20,6 @@ export const shopperslice = createSlice({
     detail: (state, action) => {
       state.detail = action.payload;
     },
-    resetDetail: (state) => {
-      state.detail = {};
-    },
     addToCart: (state, action) => {
       const product = state.cart.find((prod: Product) => prod._id === action.payload._id);
 
@@ -44,5 +41,5 @@ export const shopperslice = createSlice({
   },
 });
 
-export const { detail, resetDetail, addToCart, deleteProduct, minusQuantity, resetCart } = shopperslice.actions;
+export const { detail, addToCart, deleteProduct, minusQuantity, resetCart } = shopperslice.actions;
 export default shopperslice.reducer;

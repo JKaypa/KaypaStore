@@ -1,14 +1,13 @@
 import { ship1Img, ship2Img, ship3Img } from "@/public/assets/images";
-import { addToCart, resetDetail } from "@/store/slice";
+import { addToCart } from "@/store/slice";
 import Image from "next/image";
-import React, { useEffect } from "react";
+import React from "react";
 import { BsInfoCircle, BsStarFill } from "react-icons/bs";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
-
+import toast, { Toaster } from "react-hot-toast";
 
 function ProductDetails() {
-  
   const dispatch = useDispatch();
   const product = useSelector((state: any) => state.shopper.detail);
 
@@ -77,7 +76,7 @@ function ProductDetails() {
             </div>
             <div className="border-b border-b-zinc-300 pb-4">
               <button
-                onClick={() =>
+                onClick={() => {
                   dispatch(
                     addToCart({
                       _id: Number(product._id),
@@ -90,8 +89,9 @@ function ProductDetails() {
                       brand: product.brand,
                       category: product.category,
                     })
-                  )
-                }
+                  );
+                  toast.success(`${product.title} was added to cart successfully!`);
+                }}
                 className="w-32 h-10 bg-blue text-white rounded-full hover:bg-[#004f9a] duration-300"
               >
                 Add to cart
@@ -127,6 +127,18 @@ function ProductDetails() {
           </div>
         </div>
       </div>
+      <Toaster
+        position="top-center"
+        reverseOrder={true}
+        toastOptions={{
+          duration: 4000,
+          style: {
+            borderRadius: "10px",
+            background: "#333",
+            color: "#fff",
+          },
+        }}
+      />
     </div>
   );
 }
