@@ -2,12 +2,15 @@ import { Product } from "@/pages/api/productdata";
 import { phoneImg, ship1Img, ship2Img, ship3Img } from "@/public/assets/images";
 import Image from "next/image";
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { TbReload } from "react-icons/tb";
 import { HiMinusSm } from "react-icons/hi";
 import { MdOutlineAdd } from "react-icons/md";
+import FormattedPrice from "./FormattedPrice";
+import { addToCart, minusQuantity } from "@/store/slice";
 
 function Cart() {
+  const dispatch = useDispatch()
   const cart = useSelector((state: any) => state.shopper.cart);
 
   return (
@@ -87,23 +90,41 @@ function Cart() {
                               </span>
                               Free 30-days returns
                             </p>
-                          <div className="pt-2 flex gap-6">
-                            <button
-                              className="text-sm underline underline-offset-2 text-zinc-600 
+                            <div className="pt-2 flex gap-6">
+                              <button
+                                className="text-sm underline underline-offset-2 text-zinc-600 
                             hover:no-underline hover:text-blue duration-300"
-                            >
-                              Remove
-                            </button>
-                            <div className="w-28 h-9 border border-zinc-400 rounded-full font-semibold flex items-center justify-between px-3 text-base">
-                              <button className="text-base w-5 h-5 text-zinc-600 hover:bg-[#74767c] hover:text-white rounded-full flex items-center justify-center duration-200">
-                                <HiMinusSm />
+                              >
+                                Remove
                               </button>
-                              <span>{prod.quantity}</span>
-                              <button className="text-lg w-5 h-5 text-zinc-600 hover:bg-[#74767c] hover:text-white rounded-full flex items-center justify-center duration-200">
-                                <MdOutlineAdd />
-                              </button>
+                              <div className="w-28 h-9 border border-zinc-400 rounded-full font-semibold flex items-center justify-between px-3 text-base">
+                                <button
+                                onClick={() => dispatch(minusQuantity({_id: prod._id, quantity: prod.quantity}))} 
+                                className="text-base w-5 h-5 text-zinc-600 hover:bg-[#74767c] hover:text-white rounded-full flex items-center justify-center duration-200">
+                                  <HiMinusSm />
+                                </button>
+                                <span>{prod.quantity}</span>
+                                <button 
+                                onClick={() => dispatch(addToCart({_id: prod._id, quantity: prod.quantity}))}
+                                className="text-lg w-5 h-5 text-zinc-600 hover:bg-[#74767c] hover:text-white rounded-full flex items-center justify-center duration-200">
+                                  <MdOutlineAdd />
+                                </button>
+                              </div>
                             </div>
                           </div>
+                        </div>
+                        <div className="w-1/4 text-right flex flex-col items-end gap-1">
+                          <p className="font-semibold text-xl text-[#2a8703]">
+                            <FormattedPrice amount={prod.price * prod.quantity} />
+                          </p>
+                          <p className="text-sm line-through text-zinc-500">
+                            <FormattedPrice amount={prod.oldPrice * prod.quantity} />
+                          </p>
+                          <div className="flex items-center text-xs gap-2">
+                            <p className="bg-green-200 text-[8px] uppercase px-2 py-[1px]">
+                              You save
+                            </p>
+                            <p><FormattedPrice amount={prod.oldPrice * prod.quantity - prod.price * prod.quantity} /></p>
                           </div>
                         </div>
                       </div>
@@ -111,6 +132,7 @@ function Cart() {
                   );
                 })}
               </div>
+              <button className="w-44 bg-red-500 text-white h-10 rounded-full text-base font-semibold hover:bg-red-800 duration-300">Reset Cart</button>
             </div>
           </div>
         </div>
