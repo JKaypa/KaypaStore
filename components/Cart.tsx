@@ -3,6 +3,9 @@ import { phoneImg, ship1Img, ship2Img, ship3Img } from "@/public/assets/images";
 import Image from "next/image";
 import React from "react";
 import { useSelector } from "react-redux";
+import { TbReload } from "react-icons/tb";
+import { HiMinusSm } from "react-icons/hi";
+import { MdOutlineAdd } from "react-icons/md";
 
 function Cart() {
   const cart = useSelector((state: any) => state.shopper.cart);
@@ -67,7 +70,41 @@ function Cart() {
                       border-b-zinc-200 pb-4"
                       >
                         <div className="w-3/4 flex items-center gap-2">
-                          <Image src={prod.image} alt={prod.title} width={500} height={500} className="w-32"/>
+                          <Image
+                            src={prod.image}
+                            alt={prod.title}
+                            width={500}
+                            height={500}
+                            className="w-32"
+                          />
+                          <div>
+                            <h2 className="text-base text-zinc-900">{prod.title}</h2>
+                            <p className="text-sm text-zinc-500">{prod.description}</p>
+                            <p className="text-sm text-zinc-500">price: ${prod.price}</p>
+                            <p className="text-sm text-zinc-500 flex items-center gap-1">
+                              <span className="bg-blue rounded-full text-white text-xs">
+                                <TbReload className="rotate-180" />
+                              </span>
+                              Free 30-days returns
+                            </p>
+                          <div className="pt-2 flex gap-6">
+                            <button
+                              className="text-sm underline underline-offset-2 text-zinc-600 
+                            hover:no-underline hover:text-blue duration-300"
+                            >
+                              Remove
+                            </button>
+                            <div className="w-28 h-9 border border-zinc-400 rounded-full font-semibold flex items-center justify-between px-3 text-base">
+                              <button className="text-base w-5 h-5 text-zinc-600 hover:bg-[#74767c] hover:text-white rounded-full flex items-center justify-center duration-200">
+                                <HiMinusSm />
+                              </button>
+                              <span>{prod.quantity}</span>
+                              <button className="text-lg w-5 h-5 text-zinc-600 hover:bg-[#74767c] hover:text-white rounded-full flex items-center justify-center duration-200">
+                                <MdOutlineAdd />
+                              </button>
+                            </div>
+                          </div>
+                          </div>
                         </div>
                       </div>
                     </>
