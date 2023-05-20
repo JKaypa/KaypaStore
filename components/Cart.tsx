@@ -212,16 +212,34 @@ function Cart() {
               <div className="text-sm flex justify-between">
                 <p className="font-semibold">Savings</p>
                 <p className="font-bold text-green-700 bg-green-100 rounded-md p-1">
-                 <FormattedPrice amount={savings} />
+                  <FormattedPrice amount={savings} />
                 </p>
               </div>
-              <div className="text-sm flex justify-between">
-                <p className="font-semibold text-base">Total Amount</p>
-                <p className="font-bold text-base">
-                 <FormattedPrice amount={total} />
+              <div className="text-sm flex justify-between font-semibold">
+                <p>Total Amount</p>
+                <p>
+                  <FormattedPrice amount={total} />
                 </p>
               </div>
             </div>
+          </div>
+          <div className="w-full flex flex-col gap-4 border-b border-b-zinc-200 pb-4">
+            <div className="flex- flex-col justify-between gap-1">
+              <div className="text-sm flex justify-between">
+                <p>Shipping</p>
+                <p className="text-green-700">Free</p>
+              </div>
+              <div className="text-sm flex justify-between">
+                <p className="font-semibold">Taxes</p>
+                <p className="">Calculated in checkout</p>
+              </div>
+            </div>
+          </div>
+          <div className="flex justify-between text-base font-bold">
+            <p>Estimated Total</p>
+            <p>
+              <FormattedPrice amount={total} />
+            </p>
           </div>
         </div>
       </div>
