@@ -8,6 +8,7 @@ import NavBarButtom from "./NavBarButtom";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 import { Product } from "@/pages/api/productdata";
+import { useSession, signIn, signOut } from "next-auth/react"
 
 function Navbar() {
   const cart = useSelector((state: any) => state.shopper.cart);
@@ -73,7 +74,7 @@ function Navbar() {
             </div>
           </div>
 
-          <div className="navBarHover">
+          <div onClick={() => signIn()} className="navBarHover">
             <AiOutlineUser />
             <div>
               <p className="text-xs">Sign In</p>
