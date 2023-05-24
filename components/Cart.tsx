@@ -13,6 +13,7 @@ import { IoMdClose } from "react-icons/io";
 function Cart() {
   const dispatch = useDispatch();
   const cart = useSelector((state: any) => state.shopper.cart);
+  const user = useSelector((state: any) => state.shopper.userInfo);
   const [warningMsg, setwarningMsg] = useState(false);
   let oldPrice = 0;
   let total = 0;
@@ -171,6 +172,9 @@ function Cart() {
           className="w-1/3 p-4 mt-24 h-[500px] border border-zinc-400 
           rounded-md flex flex-col justify-center gap-4"
         >
+         {
+          
+         } 
           <div className="w-full flex flex-col gap-4 border-b border-b-zinc-200 pb-4">
             <button className="bg-blue hover:bg-hoverBg w-full text-white h-10 rounded-full font-semibold duration-300">
               Continue to checkout

@@ -6,23 +6,33 @@ import { AiOutlineHeart, AiOutlineUser } from "react-icons/ai";
 import { BsCart2 } from "react-icons/bs";
 import NavBarButtom from "./NavBarButtom";
 import Link from "next/link";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Product } from "@/pages/api/productdata";
-import { useSession, signIn, signOut } from "next-auth/react"
+import { useSession, signIn, signOut } from "next-auth/react";
+import { addUser, removeUser } from "@/store/slice";
 
 function Navbar() {
+  const { data: session } = useSession();
+  console.log(session);
+  
+  const dispatch = useDispatch();
+  const user = useSelector((state: any) => state.shopper.userInfo);
+
   const cart = useSelector((state: any) => state.shopper.cart);
   const [totalAmount, setTotalAmount] = useState(0);
 
   useEffect(() => {
-    setTotalAmount(cart
-      .map((prod: Product) => prod.price * prod.quantity)
-      .reduce((acc: number, cur: number) => acc + cur, 0)
-      .toFixed(2))
-      
-  }, [cart]);
+    session ? dispatch(addUser(session.user)) : dispatch(removeUser())
+  }, [session]);
 
-  console.log(cart);
+  useEffect(() => {
+    setTotalAmount(
+      cart
+        .map((prod: Product) => prod.price * prod.quantity)
+        .reduce((acc: number, cur: number) => acc + cur, 0)
+        .toFixed(2)
+    );
+  }, [cart]);
 
   return (
     <div className="bg-blue text-white sticky top-0 z-10">
@@ -73,14 +83,23 @@ function Navbar() {
               <h2 className="text-base font-semibold -mt-1">My Items</h2>
             </div>
           </div>
-
-          <div onClick={() => signIn()} className="navBarHover">
-            <AiOutlineUser />
-            <div>
-              <p className="text-xs">Sign In</p>
-              <h2 className="text-base font-semibold -mt-1">Account</h2>
+          {user ? (
+            <div onClick={() => signOut()} className="navBarHover">
+              <Image width={500} height={500} className="w-10 rounded-full object-cover" src={user.image} alt="userImage"/>
+              <div>
+                <p className="text-xs">Sign Out</p>
+                <h2 className="text-base font-semibold -mt-1">{user.name}</h2>
+              </div>
             </div>
-          </div>
+          ) : (
+            <div onClick={() => signIn()} className="navBarHover">
+              <AiOutlineUser />
+              <div>
+                <p className="text-xs">Sign In</p>
+                <h2 className="text-base font-semibold -mt-1">Account</h2>
+              </div>
+            </div>
+          )}
           <Link href="/cart">
             <div className="px-5 flex flex-col justify-center items-center rounded-full hover:bg-hoverBg duration-300 relative">
               <BsCart2 className="pt-1 text-2xl" />

@@ -38,8 +38,14 @@ export const shopperslice = createSlice({
     resetCart: (state) => {
       state.cart = [];
     },
+    addUser: (state, action) => {
+      state.userInfo = action.payload;
+    },
+    removeUser: (state) => {
+      state.userInfo = null;
+    },
   },
 });
 
-export const { detail, addToCart, deleteProduct, minusQuantity, resetCart } = shopperslice.actions;
+export const { detail, addToCart, deleteProduct, minusQuantity, resetCart, addUser, removeUser } = shopperslice.actions;
 export default shopperslice.reducer;
