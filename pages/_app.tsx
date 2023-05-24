@@ -6,24 +6,21 @@ import "slick-carousel/slick/slick.css";
 import { Provider } from "react-redux";
 import { persistor, store } from "../store/store"; 
 import { PersistGate } from "redux-persist/integration/react";
-import { SessionProvider } from "next-auth/react";
 
 const open_sans = Open_Sans({
   subsets: ["latin"],
   variable: "--font-open_sans",
 });
-export default function App({ Component, pageProps: {session, ...pageProps} }: AppProps) {
+export default function App({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
-      <SessionProvider session={session}>
-        <PersistGate loading={"loading"} persistor={persistor}>
-          <main className={`${open_sans.variable} font-sans`}>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          </main>
-        </PersistGate>
-      </SessionProvider>
+      <PersistGate loading={'loading'} persistor={persistor} >
+        <main className={`${open_sans.variable} font-sans`}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </main>
+      </PersistGate>
     </Provider>
   );
 }
