@@ -1,8 +1,13 @@
 import Banner from "@/components/Banner";
-import Navbar from "@/components/Navbar";
 import Head from "next/head";
+import { Data } from "./api/productdata";
+import Products from "@/components/Products";
 
-export default function Home() {
+export interface Props {
+  productData: Data;
+}
+
+export default function Home({ productData }: Props) {
   return (
     <>
       <Head>
@@ -12,13 +17,11 @@ export default function Home() {
         <link rel="icon" href="/tabLogo.ico" />
       </Head>
       <main className="bg-lightBlue">
-        <Navbar />
         <div className="max-w-contentContainer mx-auto">
           <Banner />
+          <Products productData={productData} />
         </div>
       </main>
     </>
   );
 }
-
-
