@@ -18,10 +18,6 @@
       "@/*": ["./*"]
     }
   },
-<<<<<<< HEAD
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/api/auth/[...nextauth].js"],
-=======
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
->>>>>>> 5d6a43a1d9033fe75ec59bafd718c1cee6b84f70
   "exclude": ["node_modules"]
 }
